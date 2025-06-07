@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Prasanjit Nayak – Portfolio</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:400,600&display=swap">
+  <style>
+    :root {
+      --primary: #1e293b;
+      --accent: #fbbf24;
+      --bg: #f8fafc;
+      --card: #fff;
+      --shadow: 0 4px 24px rgba(30,41,59,0.08);
+      --radius: 18px;
+      --transition: 0.25s cubic-bezier(.4,0,.2,1);
+      --max-width: 1200px;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Inter', Arial, sans-serif;
+      background: var(--bg);
+      color: var(--primary);
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    /* Utility classes */
+    .flex { display: flex; }
+    .flex-col { flex-direction: column; }
+    .flex-center { align-items: center; justify-content: center; }
+    .gap-2 { gap: 2rem; }
+    .gap-1 { gap: 1rem; }
+    .mb-2 { margin-bottom: 2rem; }
+    .mb-1 { margin-bottom: 1rem; }
+    .mt-2 { margin-top: 2rem; }
+    .text-center { text-align: center; }
+    .w-full { width: 100%; }
+    .card {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 2rem;
+      transition: box-shadow var(--transition), transform var(--transition);
+    }
+    .card-hover:hover, .card-hover:focus {
+      box-shadow: 0 8px 32px rgba(30,41,59,0.16);
+      transform: translateY(-6px) scale(1.02);
+      z-index: 1;
+    }
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(90deg, #f8fafc 60%, #fbbf24 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-content {
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+      width: 100%;
+      justify-content: center;
+    }
+    .hero-photo {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 6px solid #fff;
+      box-shadow: var(--shadow);
+      background: #e5e7eb;
+    }
+    .hero-bio {
+      max-width: 480px;
+      font-size: 1.25rem;
+      font-weight: 500;
+    }
+    .hero-name {
+      font-size: 2.8rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      line-height: 1.1;
+    }
+    @media (max-width: 600px) {
+      .hero-name {
+        font-size: 2rem;
+      }
+    }
+    .hero-sub {
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: #64748b;
+      margin-bottom: 0.5rem;
+    }
+    .hero-location {
+      font-size: 1.05rem;
+      color: #64748b;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .hero-linkedin {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4em;
+      font-size: 1.05rem;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      transition: color var(--transition);
+    }
+    .hero-linkedin:hover {
+      color: #d97706;
+      text-decoration: underline;
+    }
+    .hero-linkedin svg {
+      width: 1.2em;
+      height: 1.2em;
+      vertical-align: middle;
+      fill: currentColor;
+    }
+    .scroll-indicator {
+      position: absolute;
+      left: 50%;
+      bottom: 32px;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+      z-index: 2;
+      opacity: 0.85;
+      animation: bounce 2s infinite;
+    }
+    .scroll-indicator span {
+      font-size: 1rem;
+      color: #64748b;
+      margin-bottom: 4px;
+    }
+    .scroll-indicator svg {
+      width: 28px;
+      height: 28px;
+      stroke: #64748b;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(12px); }
+    }
+    /* Section Titles */
+    section {
+      padding: 4rem 0 2rem 0;
+    }
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      color: var(--primary);
+      letter-spacing: -1px;
+    }
+    /* Case Studies */
+    .case-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+    .case-card-title {
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    .case-metrics {
+      color: #16a34a;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    .case-link {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color var(--transition);
+    }
+    .case-link:hover { color: #d97706; }
+    /* Newsletter/Blog */
+    .newsletter-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 2rem;
+    }
+    .post-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .post-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+    .post-date {
+      font-size: 0.95rem;
+      color: #64748b;
+      margin-bottom: 0.25rem;
+    }
+    .post-excerpt {
+      font-size: 1rem;
+      color: #334155;
+    }
+    .newsletter-form {
+      background: #f1f5f9;
+      border-radius: var(--radius);
+      padding: 2rem 1.5rem;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .newsletter-form input, .newsletter-form button {
+      font-size: 1rem;
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      border: 1px solid #e5e7eb;
+      outline: none;
+      transition: border-color var(--transition);
+    }
+    .newsletter-form input:focus {
+      border-color: var(--accent);
+    }
+    .newsletter-form button {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background var(--transition);
+    }
+    .newsletter-form button:hover {
+      background: #d97706;
+    }
+    .form-error {
+      color: #dc2626;
+      font-size: 0.95rem;
+      margin-top: -0.5rem;
+    }
+    /* Skills */
+    .skills-list {
+      display: flex;
+      gap: 2rem;
+      overflow-x: auto;
+      padding-bottom: 1rem;
+    }
+    .skill-badge {
+      background: #f1f5f9;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 1.25rem 1.5rem;
+      min-width: 160px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      text-align: center;
+    }
+    .skill-icon {
+      font-size: 2rem;
+      margin-bottom: 0.25rem;
+    }
+    .skill-title {
+      font-weight: 600;
+      font-size: 1.05rem;
+    }
+    .skill-note {
+      font-size: 0.97rem;
+      color: #64748b;
+    }
+    /* Subscribe Strip */
+    .subscribe-strip {
+      background: var(--accent);
+      color: #fff;
+      padding: 3rem 0;
+      text-align: center;
+      margin-top: 3rem;
+    }
+    .subscribe-strip h2 {
+      margin-bottom: 1.5rem;
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+    .subscribe-form {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      max-width: 420px;
+      margin: 0 auto;
+      flex-wrap: wrap;
+    }
+    .subscribe-form input[type="email"] {
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      border: none;
+      font-size: 1rem;
+      outline: none;
+      min-width: 200px;
+    }
+    .subscribe-form button {
+      background: #fff;
+      color: var(--accent);
+      border: none;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 0.75rem 1.5rem;
+      cursor: pointer;
+      transition: background var(--transition), color var(--transition);
+    }
+    .subscribe-form button:hover {
+      background: #f1f5f9;
+      color: #d97706;
+    }
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero-content { flex-direction: column; gap: 2rem; }
+      .case-grid { grid-template-columns: 1fr; }
+      .newsletter-grid { grid-template-columns: 1fr; }
+      .skills-list { gap: 1rem; }
+    }
+    @media (max-width: 600px) {
+      .hero { padding: 2rem 0; }
+      .hero-photo { width: 120px; height: 120px; }
+      section { padding: 2.5rem 0 1.5rem 0; }
+      .section-title { font-size: 1.3rem; }
+      .card, .newsletter-form { padding: 1.25rem; }
+      .skills-list { flex-direction: column; gap: 1rem; }
+      .subscribe-strip { padding: 2rem 0; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <div class="container">
+      <div class="hero-content">
+        <img src="profile.jpg" alt="Profile Photo" class="hero-photo" />
+        <div class="hero-bio">
+          <div class="hero-name">Prasanjit Nayak</div>
+          <div class="hero-sub">Product Manager @Exxat</div>
+          <div class="hero-location">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24"><path fill="#64748b" d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5Z"/></svg>
+            Bangalore, India
+          </div>
+          <a class="hero-linkedin" href="https://www.linkedin.com/in/prasanjitnayak/" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.27c-.97 0-1.75-.79-1.75-1.76s.78-1.76 1.75-1.76 1.75.79 1.75 1.76-.78 1.76-1.75 1.76zm15.5 11.27h-3v-5.6c0-1.34-.03-3.07-1.87-3.07-1.87 0-2.16 1.46-2.16 2.97v5.7h-3v-10h2.89v1.36h.04c.4-.75 1.37-1.54 2.82-1.54 3.01 0 3.57 1.98 3.57 4.56v5.62z"/></svg>
+            LinkedIn
+          </a>
+          <p>
+            Product leader and UX enthusiast passionate about building delightful digital experiences. I help teams turn complex problems into simple, impactful solutions. Always learning, always shipping.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-indicator" onclick="document.getElementById('case-studies').scrollIntoView({behavior:'smooth'})">
+      <span>Scroll down</span>
+      <svg fill="none" stroke-width="2" viewBox="0 0 24 24">
+        <path d="M12 5v14M19 12l-7 7-7-7" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- Case Studies Section -->
+  <section id="case-studies">
+    <div class="container">
+      <div class="section-title">Case Studies</div>
+      <div class="case-grid">
+        <div class="card card-hover">
+          <div class="case-card-title">Checkout Redesign</div>
+          <div class="case-problem mb-1">Reduced cart abandonment for e-commerce app</div>
+          <div class="case-metrics">+25% conversion</div>
+          <a href="#" class="case-link">Read More →</a>
+        </div>
+        <div class="card card-hover">
+          <div class="case-card-title">Onboarding Revamp</div>
+          <div class="case-problem mb-1">Simplified user onboarding for SaaS platform</div>
+          <div class="case-metrics">-40% drop-off</div>
+          <a href="#" class="case-link">Read More →</a>
+        </div>
+        <div class="card card-hover">
+          <div class="case-card-title">Mobile Growth</div>
+          <div class="case-problem mb-1">Launched referral program for fintech app</div>
+          <div class="case-metrics">+18K new users</div>
+          <a href="#" class="case-link">Read More →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter/Blog Section -->
+  <section id="newsletter">
+    <div class="container">
+      <div class="section-title">Newsletter</div>
+      <div class="newsletter-grid">
+        <div>
+          <div class="post-list">
+            <div>
+              <div class="post-title">How to Prioritize Product Features</div>
+              <div class="post-date">June 2025</div>
+              <div class="post-excerpt">A practical framework for making tough roadmap decisions and keeping stakeholders aligned.</div>
+            </div>
+            <div>
+              <div class="post-title">UX Lessons from Failed Launches</div>
+              <div class="post-date">May 2025</div>
+              <div class="post-excerpt">What I learned from products that didn’t meet expectations—and how to bounce back stronger.</div>
+            </div>
+            <div>
+              <div class="post-title">Metrics That Matter</div>
+              <div class="post-date">April 2025</div>
+              <div class="post-excerpt">Cut through vanity metrics and focus on what truly drives product growth.</div>
+            </div>
+          </div>
+        </div>
+        <form class="newsletter-form" id="newsletter-form" novalidate>
+          <div style="font-weight:600;font-size:1.1rem;margin-bottom:0.5rem;">Sign up for updates</div>
+          <input type="text" id="newsletter-name" name="name" placeholder="Your Name" autocomplete="off" required>
+          <input type="email" id="newsletter-email" name="email" placeholder="Your Email" autocomplete="off" required>
+          <button type="submit">Subscribe</button>
+          <div class="form-error" id="newsletter-error"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills">
+    <div class="container">
+      <div class="section-title">Skills &amp; Tools</div>
+      <div class="skills-list">
+        <div class="skill-badge">
+          <span class="skill-icon">🎨</span>
+          <div class="skill-title">Figma</div>
+          <div class="skill-note">Led UX research for feature launches</div>
+        </div>
+        <div class="skill-badge">
+          <span class="skill-icon">⚡️</span>
+          <div class="skill-title">JIRA</div>
+          <div class="skill-note">Managed agile sprints for 5+ teams</div>
+        </div>
+        <div class="skill-badge">
+          <span class="skill-icon">⚛️</span>
+          <div class="skill-title">React</div>
+          <div class="skill-note">Built interactive dashboards</div>
+        </div>
+        <div class="skill-badge">
+          <span class="skill-icon">📊</span>
+          <div class="skill-title">Amplitude</div>
+          <div class="skill-note">Analyzed product metrics weekly</div>
+        </div>
+        <div class="skill-badge">
+          <span class="skill-icon">📝</span>
+          <div class="skill-title">Notion</div>
+          <div class="skill-note">Documented product specs & learnings</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Subscribe Section -->
+  <section class="subscribe-strip" id="subscribe">
+    <div class="container">
+      <h2>Subscribe to my newsletter</h2>
+      <form class="subscribe-form" id="subscribe-form" novalidate>
+        <input type="email" id="subscribe-email" name="email" placeholder="Your Email" required autocomplete="off">
+        <button type="submit">Subscribe</button>
+      </form>
+      <div class="form-error" id="subscribe-error"></div>
+    </div>
+  </section>
+
+  <script src="main.js"></script>
+</body>
+</html>
