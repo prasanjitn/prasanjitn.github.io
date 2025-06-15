@@ -150,13 +150,13 @@ function App() {
                   </div>
                   <div className="px-4 pb-4">
                     <img 
-                      src="https://images.pexels.com/photos/3631430/pexels-photo-3631430.jpeg?auto=compress&cs=tinysrgb&w=400" 
-                      alt="Montreal skyline" 
+                      src="/Screenshot 2025-06-16 at 3.24.50 AM.png" 
+                      alt="Bengaluru map" 
                       className="w-full h-32 object-cover rounded-xl mb-4"
                     />
-                    <h3 className="text-lg font-semibold text-gray-900 mb-1">MONTREAL</h3>
-                    <p className="text-sm text-gray-500 mb-1">CANADA</p>
-                    <p className="text-xs text-gray-400">45.5017°N, 73.5673°W</p>
+                    <h3 className="text-lg font-semibold text-gray-900 mb-1">BENGALURU</h3>
+                    <p className="text-sm text-gray-500 mb-1">INDIA</p>
+                    <p className="text-xs text-gray-400">12.9696°N, 77.6477°E</p>
                   </div>
                 </div>
 
