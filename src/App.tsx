@@ -106,10 +106,15 @@ function App() {
 
               {/* CTA Section */}
               <div className="flex flex-col md:flex-row items-center gap-6 mb-12 p-6 bg-gray-50 rounded-2xl">
-                <button className="bg-black text-white px-8 py-3 rounded-full hover:bg-gray-800 transition-colors flex items-center gap-2">
+                <a 
+                  href="https://topmate.io/prasanjitn" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="bg-black text-white px-8 py-3 rounded-full hover:bg-gray-800 transition-colors flex items-center gap-2 no-underline"
+                >
                   <Phone size={16} />
                   Book a call
-                </button>
+                </a>
                 <p className="text-gray-600 text-center md:text-left">
                   Feel free to explore my portfolio and reach out—I'd love to connect!
                 </p>
