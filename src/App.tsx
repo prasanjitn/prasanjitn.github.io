@@ -160,7 +160,23 @@ function App() {
                   </div>
                 </div>
 
-                {/* Music Card */}
+                {/* Reading Card - moved to third position */}
+                <div className="bg-gray-100 rounded-3xl border-2 border-white p-6 hover:shadow-xl transition-shadow">
+                  <div className="bg-white rounded-xl border border-gray-100 px-3 py-1 mb-4 inline-block">
+                    <span className="text-xs text-gray-500">What I'm reading</span>
+                  </div>
+                  <h3 className="text-sm font-medium text-gray-900 mb-2 leading-tight">
+                    Dieter Rams: The Complete Works
+                  </h3>
+                  <p className="text-xs text-gray-400 mb-4">Klaus Klemp</p>
+                  <img 
+                    src="https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&cs=tinysrgb&w=300" 
+                    alt="Design book" 
+                    className="w-24 h-20 object-cover rounded-lg"
+                  />
+                </div>
+
+                {/* Music Card - moved to fourth position */}
                 <div className="bg-gray-50 rounded-3xl border-2 border-white overflow-hidden hover:shadow-xl transition-shadow">
                   <div className="p-4">
                     <div className="bg-white rounded-lg px-3 py-1 mb-4 inline-block">
@@ -179,22 +195,6 @@ function App() {
                       <span>Play on Spotify</span>
                     </div>
                   </div>
-                </div>
-
-                {/* Reading Card */}
-                <div className="bg-gray-100 rounded-3xl border-2 border-white p-6 hover:shadow-xl transition-shadow">
-                  <div className="bg-white rounded-xl border border-gray-100 px-3 py-1 mb-4 inline-block">
-                    <span className="text-xs text-gray-500">What I'm reading</span>
-                  </div>
-                  <h3 className="text-sm font-medium text-gray-900 mb-2 leading-tight">
-                    Dieter Rams: The Complete Works
-                  </h3>
-                  <p className="text-xs text-gray-400 mb-4">Klaus Klemp</p>
-                  <img 
-                    src="https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&cs=tinysrgb&w=300" 
-                    alt="Design book" 
-                    className="w-24 h-20 object-cover rounded-lg"
-                  />
                 </div>
 
                 {/* Work Process Card - spans 2 columns on larger screens */}
