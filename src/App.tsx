@@ -111,27 +111,31 @@ function App() {
               {/* Cards Grid */}
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {/* Experience Card */}
-                <div className="bg-gray-50 rounded-3xl p-6 border-2 border-white hover:shadow-xl transition-shadow">
+                <div className="bg-gray-50 rounded-3xl p-6 border-2 border-white hover:shadow-xl transition-shadow relative">
                   <div className="flex items-center gap-2 mb-4">
                     <div className="bg-white rounded-lg px-3 py-1">
                       <span className="text-xs text-gray-500">My Experience</span>
                     </div>
                   </div>
-                  <div className="space-y-4">
-                    {experiences.map((exp, index) => (
-                      <div key={index} className="flex gap-3">
-                        <div className="flex-shrink-0 mt-1">
-                          <div className={`w-2 h-2 rounded-full ${exp.current ? 'bg-orange-500' : 'bg-gray-300'}`}></div>
-                          {index < experiences.length - 1 && <div className="w-0.5 h-8 bg-gray-200 ml-0.5 mt-1"></div>}
+                  <div className="relative">
+                    <div className="h-48 overflow-y-auto scrollbar-hide space-y-4">
+                      {experiences.map((exp, index) => (
+                        <div key={index} className="flex gap-3">
+                          <div className="flex-shrink-0 mt-1">
+                            <div className={`w-2 h-2 rounded-full ${exp.current ? 'bg-orange-500' : 'bg-gray-300'}`}></div>
+                            {index < experiences.length - 1 && <div className="w-0.5 h-8 bg-gray-200 ml-0.5 mt-1"></div>}
+                          </div>
+                          <div>
+                            <h4 className={`text-sm font-medium ${exp.current ? 'text-gray-900' : 'text-gray-600'}`}>
+                              {exp.title}
+                            </h4>
+                            <p className="text-xs text-gray-400">{exp.period}</p>
+                          </div>
                         </div>
-                        <div>
-                          <h4 className={`text-sm font-medium ${exp.current ? 'text-gray-900' : 'text-gray-600'}`}>
-                            {exp.title}
-                          </h4>
-                          <p className="text-xs text-gray-400">{exp.period}</p>
-                        </div>
-                      </div>
-                    ))}
+                      ))}
+                    </div>
+                    {/* Fade overlay at bottom */}
+                    <div className="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-gray-50 to-transparent pointer-events-none"></div>
                   </div>
                 </div>
 
