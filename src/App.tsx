@@ -29,21 +29,25 @@ function App() {
 
   const experiences = [
     {
-      title: "Senior Product Lead at Apple",
-      period: "2025 - Remote - Full time",
+      title: "Product Manager, EXXAT",
+      period: "08/2024 — Present",
       current: true
     },
     {
-      title: "Product Lead at Apple",
-      period: "2024 - On site - Full time"
+      title: "Senior Product Manager, UNext",
+      period: "04/2024 — 07/2024"
     },
     {
-      title: "Product Designer at Apple",
-      period: "2023 - Hybrid - Part time"
+      title: "Product Manager, UNext",
+      period: "08/2022 — 03/2024"
     },
     {
-      title: "UI-UX Designer at Apple",
-      period: "2022 - Remote - Full time"
+      title: "Product Manager, OT Marketplace",
+      period: "01/2020 — 07/2022"
+    },
+    {
+      title: "Account Manager, OT Marketplace",
+      period: "05/2017 — 12/2019"
     }
   ];
 
