@@ -150,11 +150,11 @@ function App() {
                   </div>
                   <div className="px-4 pb-4">
                     <img 
-                      src="/Screenshot%202025-06-16%20at%203.24.50%20AM.png" 
+                      src="/blr-map.png" 
                       alt="Bengaluru map" 
                       className="w-full h-32 object-cover rounded-xl mb-4"
                       onError={(e) => {
-                        // Fallback to a Bengaluru image from Pexels if the screenshot doesn't load
+                        // Fallback to a Bengaluru image from Pexels if the map doesn't load
                         e.currentTarget.src = "https://images.pexels.com/photos/789750/pexels-photo-789750.jpeg?auto=compress&cs=tinysrgb&w=400";
                       }}
                     />
