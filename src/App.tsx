@@ -1,29 +1,36 @@
 import React, { useState } from 'react';
-import { Mail, MapPin, Play, Book, Briefcase, Phone, User, Globe, Music, ChevronRight, Github, Linkedin } from 'lucide-react';
+import { Mail, MapPin, Play, Book, Briefcase, Phone, User, Globe, Music, ChevronRight, Github, Linkedin, ExternalLink, ArrowUpRight } from 'lucide-react';
 
 function App() {
-  const [activeStep, setActiveStep] = useState(0);
+  const [activeCase, setActiveCase] = useState(0);
 
-  const workSteps = [
+  const caseStudies = [
     {
-      title: "01 Discovery Call",
-      description: "In the first stage, we'll have a Discovery Call to discuss your goals, needs, and project requirements. This helps us align our vision and set the foundation for a successful collaboration."
+      title: "EdTech Platform Redesign",
+      company: "UNext Learning",
+      category: "B2B SaaS",
+      impact: "40% increase in user engagement",
+      description: "Led the complete redesign of the learning management system, focusing on improving user experience and reducing course completion time.",
+      image: "https://images.pexels.com/photos/5428836/pexels-photo-5428836.jpeg?auto=compress&cs=tinysrgb&w=600",
+      tags: ["UX Research", "Product Strategy", "A/B Testing"]
     },
     {
-      title: "02 Research & Analysis",
-      description: "We dive deep into user research, market analysis, and competitive landscape to understand the problem space and identify opportunities for innovation."
+      title: "Healthcare Marketplace",
+      company: "EXXAT",
+      category: "Healthcare",
+      impact: "60% reduction in booking time",
+      description: "Developed a comprehensive healthcare marketplace connecting patients with specialists, streamlining the appointment booking process.",
+      image: "https://images.pexels.com/photos/4386466/pexels-photo-4386466.jpeg?auto=compress&cs=tinysrgb&w=600",
+      tags: ["Product Design", "User Journey", "Mobile First"]
     },
     {
-      title: "03 Design & Prototype",
-      description: "Creating wireframes, user flows, and high-fidelity prototypes to visualize the solution and test ideas before development begins."
-    },
-    {
-      title: "04 Development",
-      description: "Building the product with clean, scalable code while maintaining close collaboration between design and development teams."
-    },
-    {
-      title: "05 Launch & Iterate",
-      description: "Deploying the solution and continuously improving based on user feedback and performance metrics."
+      title: "OT Marketplace Growth",
+      company: "OT Marketplace",
+      category: "Marketplace",
+      impact: "3x growth in active users",
+      description: "Implemented growth strategies and product optimizations that tripled the platform's active user base over 18 months.",
+      image: "https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=600",
+      tags: ["Growth Hacking", "Analytics", "Conversion Optimization"]
     }
   ];
 
@@ -201,39 +208,69 @@ function App() {
                   </div>
                 </div>
 
-                {/* Work Process Card - spans 2 columns on larger screens */}
+                {/* Product Case Studies Card - spans 2 columns on larger screens */}
                 <div className="lg:col-span-2 bg-gray-100 rounded-3xl border-2 border-white p-6 hover:shadow-xl transition-shadow">
-                  <div className="flex items-center gap-2 mb-6">
+                  <div className="flex items-center justify-between mb-6">
                     <div className="bg-white rounded-lg px-3 py-1">
-                      <span className="text-xs text-gray-500">How I work</span>
+                      <span className="text-xs text-gray-500">Product Case Studies</span>
+                    </div>
+                    <div className="flex items-center gap-1 text-xs text-gray-500 cursor-pointer hover:text-gray-700 transition-colors">
+                      <span>View All</span>
+                      <ExternalLink size={12} />
                     </div>
                   </div>
                   
-                  {/* Step Navigation */}
+                  {/* Case Study Navigation */}
                   <div className="flex flex-wrap gap-2 mb-6 bg-white rounded-lg p-2">
-                    {workSteps.map((step, index) => (
+                    {caseStudies.map((study, index) => (
                       <button
                         key={index}
-                        onClick={() => setActiveStep(index)}
+                        onClick={() => setActiveCase(index)}
                         className={`px-4 py-2 rounded-lg text-xs transition-colors ${
-                          activeStep === index 
+                          activeCase === index 
                             ? 'bg-black text-white' 
                             : 'text-gray-500 hover:bg-gray-100'
                         }`}
                       >
-                        Step {String(index + 1).padStart(2, '0')}
+                        {study.company}
                       </button>
                     ))}
                   </div>
 
-                  {/* Active Step Content */}
-                  <div className="space-y-3">
-                    <h3 className="text-sm font-medium text-gray-900">
-                      {workSteps[activeStep].title}
-                    </h3>
-                    <p className="text-xs text-gray-600 leading-relaxed">
-                      {workSteps[activeStep].description}
-                    </p>
+                  {/* Active Case Study Content */}
+                  <div className="space-y-4">
+                    <div className="flex items-start gap-4">
+                      <img 
+                        src={caseStudies[activeCase].image}
+                        alt={caseStudies[activeCase].title}
+                        className="w-16 h-16 rounded-xl object-cover flex-shrink-0"
+                      />
+                      <div className="flex-1">
+                        <div className="flex items-center gap-2 mb-2">
+                          <h3 className="text-sm font-medium text-gray-900">
+                            {caseStudies[activeCase].title}
+                          </h3>
+                          <span className="text-xs bg-orange-100 text-orange-600 px-2 py-1 rounded-full">
+                            {caseStudies[activeCase].category}
+                          </span>
+                        </div>
+                        <p className="text-xs text-gray-600 leading-relaxed mb-3">
+                          {caseStudies[activeCase].description}
+                        </p>
+                        <div className="flex items-center justify-between">
+                          <div className="flex flex-wrap gap-1">
+                            {caseStudies[activeCase].tags.map((tag, tagIndex) => (
+                              <span key={tagIndex} className="text-xs bg-gray-200 text-gray-600 px-2 py-1 rounded-full">
+                                {tag}
+                              </span>
+                            ))}
+                          </div>
+                          <div className="text-xs font-medium text-green-600">
+                            {caseStudies[activeCase].impact}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
