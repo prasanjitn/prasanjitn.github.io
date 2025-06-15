@@ -34,7 +34,7 @@ function App() {
       current: true
     },
     {
-      title: "Senior Product Manager, UNext",
+      title: "Sr. Product Manager, UNext",
       period: "04/2024 — 07/2024"
     },
     {
@@ -42,11 +42,11 @@ function App() {
       period: "08/2022 — 03/2024"
     },
     {
-      title: "Product Manager, OT Marketplace",
+      title: "PM, OT Marketplace",
       period: "01/2020 — 07/2022"
     },
     {
-      title: "Account Manager, OT Marketplace",
+      title: "Growth, OT Marketplace",
       period: "05/2017 — 12/2019"
     }
   ];
